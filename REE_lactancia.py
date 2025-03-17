@@ -47,7 +47,7 @@ def calcular_ree(edad, peso_pregestacional, talla, naf, lactancia=False, semestr
     return ree, ger
 
 # Configuración de la app de Streamlit
-st.title("Calculadora de Requerimiento Energético Estimado (REE)")
+st.title("Cálculo de Requerimiento Energético Estimado (REE) durante la lactancia")
 st.markdown("""
 Esta aplicación calcula el **Requerimiento Energético Estimado (REE)** para mujeres adolescentes y adultas.
 Incluye el costo energético para la producción de leche durante la lactancia y ajustes por alimentación durante el embarazo.
@@ -60,9 +60,14 @@ peso_pregestacional = st.number_input("Ingrese el peso pregestacional en kg:", m
 talla = st.number_input("Ingrese la talla en metros:", min_value=1.0, max_value=2.5, value=1.65)
 naf = st.number_input(
     "Ingrese el nivel de actividad física (NAF):",
-    min_value=1.40, max_value=1.80, value=1.60, step=0.01,
-    help="1.40: Sedentaria, 1.60: Activa, 1.80: Muy activa"
+    min_value=1.40, max_value=2.40, value=1.60, step=0.01,
+    help="Sedentario 1.40-1.69, Activo 1.70-1.99, Vigoroso 2.00-2.40"
 )
+st.markdown("""
+- **Sedentario:** 1.40-1.69
+- **Activo:** 1.70-1.99
+- **Vigoroso:** 2.00-2.40
+""")
 
 # Opciones para lactancia
 lactancia = st.checkbox("¿Está lactando?")
@@ -90,3 +95,4 @@ if st.button("Calcular REE"):
             st.info(f"El Gasto Energético en Reposo (GER) es: **{ger:.2f} kcal/día**")
     except ValueError as e:
         st.error(e)
+        
