@@ -54,12 +54,6 @@ Incluye el costo energético para la producción de leche durante la lactancia y
 **Nota:** Se utiliza el peso pregestacional (peso antes del embarazo) para el cálculo.
 """)
 
-# Agregar visualización de referencia
-st.markdown("""
-### Referencia
-Palafox López, M. E., & Ledesma Lozano, J. Á. (2021). Manual de fórmulas y tablas para la intervención nutriológica (4ª ed.).
-""")
-
 # Entradas del usuario
 edad = st.number_input("Ingrese la edad en años:", min_value=12, max_value=50, value=25)
 peso_pregestacional = st.number_input("Ingrese el peso pregestacional en kg:", min_value=30.0, max_value=200.0, value=60.0)
@@ -101,3 +95,9 @@ if st.button("Calcular REE"):
             st.info(f"El Gasto Energético en Reposo (GER) es: **{ger:.2f} kcal/día**")
     except ValueError as e:
         st.error(e)
+
+# Agregar visualización de referencia
+st.markdown("""
+### Referencia
+Palafox López, M. E., & Ledesma Lozano, J. Á. (2021). Manual de fórmulas y tablas para la intervención nutriológica (4ª ed.).
+""")
